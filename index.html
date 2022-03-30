@@ -4,6 +4,12 @@
       <title>Example</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Tic Tac Toe</title>
+      <!-- <link rel="stylesheet" href="./css/main.css"> -->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
       <!-- Do not add `link` tags-->
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
@@ -12,6 +18,55 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
+      <h1>TikTakToe: <br> The Game</h1>
+
+      <div class="pop">
+      <h3>Sign Up</h3>
+      <form id="sign-up-form">
+        <input name="credentials[email]" type="email" placeholder="Email">
+        <input name="credentials[password]" type="password" placeholder="Enter password">
+        <input name="credentials[password_confirmation]" type="password" placeholder="Enter password again">
+        <button type="submit">Sign Up</button>
+      </form>
+      
+      <h3>Sign In</h3>
+      <form id="sign-in-form">
+        <input name="credentials[email]" type="email" placeholder="Email">
+        <input name="credentials[password]" type="password" placeholder="Enter password">
+        <button type="submit">Sign In</button>
+      </form>
+      
+      <h3>Change Password</h3>
+      <form id="change-password-form">
+        <input name="passwords[old]" type="password" placeholder="Enter old password">
+        <input name="passwords[new]" type="password" placeholder="Enter new password">
+        <button type="submit">Change Password</button>
+      </form>
+      
+      <h3>Sign Out</h3>
+      <button id="sign-out-button">Sign Out</button>
+      <br>
+      <br>
+      <br>
+      </div>
+    
+      <section id="auth-display"></section>
+<div class="board" style="justify-content: center;">
+  <div class="row">
+    <div id="zero" class="col-4" type="button" data-value="null">0</div>
+    <div id="one" class="col-4" type="button" data-value="null">1</div>
+    <div id="two" class="col-4" type="button" data-value="null">2</div>
+    <div id="three" class="col-4" type="button" data-value="null">3</div>
+    <div id="four" class="col-4" type="button" data-value="null">4</div>
+    <div id="five" class="col-4" type="button" data-value="null">5</div>
+    <div id="six" class="col-4" type="button" data-value="null">6</div>
+    <div id="seven" class="col-4" type="button" data-value="null">7</div>
+    <div id="eight" class="col-4" type="button" data-value="null">8</div>
+  </div>
+</div> 
+      <div id="app"></div>
+      <!-- <script src="./app/books/main.js" type="module"></script> -->
+      <script src="./app/app.js"></script>
+  <script src="./app/books/gamer.js"></script>
     </body>
 </html>
