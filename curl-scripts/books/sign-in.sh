@@ -1,6 +1,6 @@
 #!/bin/bash
 
-curl "https://library-express-api.herokuapp.com/sign-in" \
+curl "https://tic-tac-toe-api-development.herokuapp.com/sign-in" \
   --include \
   --request POST \
   --header "Content-Type: application/json" \
@@ -10,4 +10,5 @@ curl "https://library-express-api.herokuapp.com/sign-in" \
       "password": "'"${PASSWORD}"'"
     }
   }'
+
 echo
