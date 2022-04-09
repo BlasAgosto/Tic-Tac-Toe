@@ -21,7 +21,7 @@
       <h1>TikTakToe: <br> The Game</h1>
 
       <div class="pop">
-      <h3>Sign Up</h3>
+      <h3 id="signUpH3">Sign Up</h3>
       <form id="sign-up-form">
         <input name="credentials[email]" type="email" placeholder="Email">
         <input name="credentials[password]" type="password" placeholder="Enter password">
@@ -29,45 +29,47 @@
         <button type="submit">Sign Up</button>
       </form>
       
-      <h3>Sign In</h3>
+      <h3 id="signInH3">Sign In</h3>
       <form id="sign-in-form">
         <input name="credentials[email]" type="email" placeholder="Email">
         <input name="credentials[password]" type="password" placeholder="Enter password">
         <button type="submit">Sign In</button>
       </form>
-      
-      <h3>Change Password</h3>
-      <form id="change-password-form">
-        <input name="passwords[old]" type="password" placeholder="Enter old password">
-        <input name="passwords[new]" type="password" placeholder="Enter new password">
-        <button type="submit">Change Password</button>
-      </form>
-      
-      <h3>Sign Out</h3>
-      <button id="sign-out-button">Sign Out</button>
-      <br>
-      <br>
-      <br>
       </div>
+
+      <div id="inside" class="popTwo" style="display:none"></div>
+
+            <h3 id="change" style="display:none">Change Password</h3>
+            <form id="change-password-form" style="display:none">
+              <input name="passwords[old]" type="password" placeholder="Enter old password">
+              <input name="passwords[new]" type="password" placeholder="Enter new password">
+              <button type="submit">Change Password</button>
+            </form>
+            
+            <h3 id="sign-out" style="display:none">Sign Out</h3>
+            <button id="sign-out-button" style="display:none">Sign Out</button>
+    
+    </div>
+
     <div id="win" style="display:none">You've won! Congratulations Player:<div id="identifyYourself"></div> As for you player <div id="loser"> </div>You have lost.</div>
 
-    <div id="tie" style="display:none">You've Lost! Both of you! How could you both have failed to get a win!? You're a shame on your blood line! You have TIED! Play AGAIN!</div>
+    <div id="tie" style="display:none">You've Lost! Both of you! How could you both have failed to get a win!? <br>You're a shame on your blood line!</br> You have TIED! <br> Play AGAIN!</br></div>
 
-      <div id="reset" style="display:none" type="button" >Hide me until you sign in UwU</div>
+      <div id="reset" style="display:none" type="button" >Re / Start Game</div>
 
       <section id="auth-display"></section>
     
 <div id="gameBoard" class="board" style="justify-content: center; display:none">
   <div id="SUPREME" class="row">
-    <div id="0" class="col-4" type="button" data-value="null">I am a professional</div>
-    <div id="1" class="col-4" type="button" data-value="null">I am a professional</div>
-    <div id="2" class="col-4" type="button" data-value="null">I am a professional</div>
-    <div id="3" class="col-4" type="button" data-value="null">I am a professional</div>
-    <div id="4" class="col-4" type="button" data-value="null">I am a professional</div>
-    <div id="5" class="col-4" type="button" data-value="null">I am a professional</div>
-    <div id="6" class="col-4" type="button" data-value="null">I am a professional</div>
-    <div id="7" class="col-4" type="button" data-value="null">I am a professional</div>
-    <div id="8" class="col-4" type="button" data-value="null">I am a professional</div>
+    <div id="0" class="col-4" type="button" data-value="null">Click Re / Start Game To Play</div>
+    <div id="1" class="col-4" type="button" data-value="null">Click Re / Start Game To Play</div>
+    <div id="2" class="col-4" type="button" data-value="null">Click Re / Start Game To Play</div>
+    <div id="3" class="col-4" type="button" data-value="null">Click Re / Start Game To Play</div>
+    <div id="4" class="col-4" type="button" data-value="null">Click Re / Start Game To Play</div>
+    <div id="5" class="col-4" type="button" data-value="null">Click Re / Start Game To Play</div>
+    <div id="6" class="col-4" type="button" data-value="null">Click Re / Start Game To Play</div>
+    <div id="7" class="col-4" type="button" data-value="null">Click Re / Start Game To Play</div>
+    <div id="8" class="col-4" type="button" data-value="null">Click Re / Start Game To Play</div>
   </div>
 </div> 
       <div id="app"></div>

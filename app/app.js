@@ -16,7 +16,7 @@ $(() => {
   $('#reset').on('click', function () {
     console.log('muah')
     gameBoard = ['0', '1', '2', '3', '4', '5', '6', '7', '8']
-    $('.col-4').html('I am a professional 2')
+    $('.col-4').html('Click Me To Place Your Piece')
     $('.col-4').on('click', onClick)
     refreshGame()
   })
@@ -104,6 +104,7 @@ $(() => {
   function tieText () {
     const element = document.getElementById('tie')
     element.style.display = 'block'
+    newButton()
   }
 
   function freezeBoard () {
@@ -119,6 +120,7 @@ $(() => {
     win.textContent = gameBoard[i]
     const lose = document.getElementById('loser')
     lose.textContent = currentPlayer[1]
+    newButton()
   }
 
   function refreshGame () {
@@ -131,5 +133,12 @@ $(() => {
     choosePlayer()
     // $('.col-4').on()
     gameOver = false
+    const elementThree = document.getElementById('reset')
+    elementThree.style.display = 'none'
+  }
+
+  function newButton () {
+    const elementThree = document.getElementById('reset')
+    elementThree.style.display = 'block'
   }
 })

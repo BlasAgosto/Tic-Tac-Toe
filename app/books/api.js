@@ -2,6 +2,7 @@
 
 const store = require('../store.js')
 const config = require('../config.js')
+// const app = require('../app.js')
 
 const signUp = function (data) {
   return $.ajax({
