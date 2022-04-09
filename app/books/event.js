@@ -76,6 +76,8 @@ function showGameBoard () {
   elementFive.style.display = 'block'
   const elementSix = document.getElementById('change-password-form')
   elementSix.style.display = 'block'
+  const elementEight = document.getElementById('changePWB')
+  elementEight.style.display = 'block'
   const elementSeven = document.getElementById('inside')
   elementSeven.style.display = 'block'
 }
