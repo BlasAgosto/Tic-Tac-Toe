@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Example</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Tic Tac Toe</title>
+      <!-- <link rel="stylesheet" href="./css/main.css"> -->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+      <h1>TikTakToe: <br> The Game</h1>
+
+      <div class="pop">
+      <h3 id="signUpH3">Sign Up</h3>
+      <form id="sign-up-form">
+        <input name="credentials[email]" type="email" placeholder="Email">
+        <input name="credentials[password]" type="password" placeholder="Enter password">
+        <input name="credentials[password_confirmation]" type="password" placeholder="Enter password again">
+        <button type="submit">Sign Up</button>
+      </form>
+      
+      <h3 id="signInH3">Sign In</h3>
+      <form id="sign-in-form">
+        <input name="credentials[email]" type="email" placeholder="Email">
+        <input name="credentials[password]" type="password" placeholder="Enter password">
+        <button type="submit">Sign In</button>
+      </form>
+      </div>
+
+      <div id="inside" class="popTwo" style="display:none">
+
+            <h3 id="change" style="display:none">Change Password</h3>
+            <form id="change-password-form" style="display:none">
+              <input name="passwords[old]" type="password" placeholder="Enter old password">
+              <input name="passwords[new]" type="password" placeholder="Enter new password">
+              <button id="changePWB" type="submit">Change Password</button>
+            </form>
+            
+            <h3 id="sign-out" style="display:none">Sign Out</h3>
+            <button id="sign-out-button" style="display:none">Sign Out</button>
+    
+      </div>
+
+    <div id="win" style="display:none">You've won! Congratulations Player:<div id="identifyYourself"></div> As for you player <div id="loser"> </div>You have lost.</div>
+
+    <div id="tie" style="display:none">You've Lost! Both of you! How could you both have failed to get a win!? <br>You're a shame on your blood line!<br> You have TIED! <br> Play AGAIN!<br></div>
+
+      <div id="reset" style="display:none" type="button" >Re / Start Game</div>
+
+      <div class="fade-out" id="auth-display" ></div>
+    
+<div id="gameBoard" class="board" style="justify-content: center; display:none">
+  <div id="SUPREME" class="row">
+    <div id="0" class="col-4" type="button" data-value="null">Click Re / Start Game To Play</div>
+    <div id="1" class="col-4" type="button" data-value="null">Click Re / Start Game To Play</div>
+    <div id="2" class="col-4" type="button" data-value="null">Click Re / Start Game To Play</div>
+    <div id="3" class="col-4" type="button" data-value="null">Click Re / Start Game To Play</div>
+    <div id="4" class="col-4" type="button" data-value="null">Click Re / Start Game To Play</div>
+    <div id="5" class="col-4" type="button" data-value="null">Click Re / Start Game To Play</div>
+    <div id="6" class="col-4" type="button" data-value="null">Click Re / Start Game To Play</div>
+    <div id="7" class="col-4" type="button" data-value="null">Click Re / Start Game To Play</div>
+    <div id="8" class="col-4" type="button" data-value="null">Click Re / Start Game To Play</div>
+  </div>
+</div> 
+      <!-- <script src="./app/books/main.js" type="module"></script> -->
+      <script src="./app/app.js"></script>
+      <script src="./app/books/gamer.js"></script>
+    </body>
+</html>
