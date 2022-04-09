@@ -21,8 +21,7 @@ const onSignUp = function (event) {
 const onSignIn = function (event) {
   event.preventDefault()
   console.log('signing in')
-  showGameBoard()
-  hideSignin()
+
   const form = event.target
   const data = getFormFields(form)
   console.log(data)
@@ -30,6 +29,8 @@ const onSignIn = function (event) {
   authApi
     .signIn(data)
     .then((response) => authUi.onSignInSuccess(response))
+    .then(showGameBoard())
+    .then(hideSignin())
     .catch(() => authUi.onSignInFailure())
 }
 
@@ -81,6 +82,10 @@ function showGameBoard () {
   const elementSeven = document.getElementById('inside')
   elementSeven.style.display = 'block'
 }
+
+// use Jquery in the future
+// $('#gameBoard').show()
+// $('#gameBoard').hide()
 
 function hideSignin () {
   const element = document.getElementById('sign-up-form')
