@@ -6,14 +6,11 @@ const getFormFields = require('../../lib/get-form-fields.js')
 
 const onSignUp = function (event) {
   event.preventDefault()
-  // console.log('now here')
+  console.log('signing up')
 
-  // get data from form
   const form = event.target
   const data = getFormFields(form)
   console.log(data)
-
-  // }
 
   authApi
     .signUp(data)
@@ -23,14 +20,13 @@ const onSignUp = function (event) {
 
 const onSignIn = function (event) {
   event.preventDefault()
+  console.log('signing in')
 
-  // get data from form
   const form = event.target
   const data = getFormFields(form)
   console.log(data)
 
   authApi
-
     .signIn(data)
     .then((response) => authUi.onSignInSuccess(response))
     .catch(() => authUi.onSignInFailure())
@@ -39,28 +35,35 @@ const onSignIn = function (event) {
 const onChangePassword = function (event) {
   event.preventDefault()
 
-  // get data from form
   const form = event.target
   const data = getFormFields(form)
   console.log(data)
 
   authApi
     .changePassword(data)
-    .then((response) => authUi.onChangePasswordSuccess(response))
+    .then(() => authUi.onChangePasswordSuccess())
     .catch(() => authUi.onChangePasswordFailure())
 }
 
 const onSignOut = function () {
+  console.log('trying to sign out')
   authApi
     .signOut()
     .then(() => authUi.onSignOutSuccess())
     .catch(() => authUi.onSignOutFailure())
 }
 
+const createGame = function () {
+  authApi
+    .newGame()
+    .then((response) => authUi.onCreateGameSuccess(response))
+    .catch(() => authUi.onCreateGameFailure())
+}
+
 module.exports = {
   onSignUp,
-  // onSignUp: onSignUp,
   onSignIn,
   onChangePassword,
-  onSignOut
+  onSignOut,
+  createGame
 }

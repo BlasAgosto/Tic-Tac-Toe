@@ -2,127 +2,134 @@
 
 const bootstrap = require('bootstrap')
 const addNestedValue = require('../lib/add-nested-value.js')
+const { updateGame } = require('./books/api.js')
 const authEvents = require('./books/event.js')
-let pain = ['0', '1', '2', '3', '4', '5', '6', '7', '8']
+let gameBoard = ['0', '1', '2', '3', '4', '5', '6', '7', '8']
+let gameOver = false
 
 $(() => {
   $('#sign-up-form').on('submit', authEvents.onSignUp)
   $('#sign-in-form').on('submit', authEvents.onSignIn)
   $('#change-password-form').on('submit', authEvents.onChangePassword)
   $('#sign-out-button').on('click', authEvents.onSignOut)
+  $('#reset').on('click', authEvents.createGame)
   $('#reset').on('click', function () {
     console.log('muah')
-    pain = ['0', '1', '2', '3', '4', '5', '6', '7', '8']
-    $('.col-4').html('Stuff me Senpai 2')
+    gameBoard = ['0', '1', '2', '3', '4', '5', '6', '7', '8']
+    $('.col-4').html('I am a professional 2')
     $('.col-4').on('click', onClick)
-    terrible()
+    refreshGame()
   })
 
   function onClick () {
-    const stampyBoi = nameless()
+    const playerValue = choosePlayer()
 
-    $(this).data('value', stampyBoi)
-    const clickyBoi = $(this).attr('id')
+    $(this).data('value', playerValue)
+    const boardValue = $(this).attr('id')
 
-    pain[clickyBoi] = stampyBoi
-    console.log(pain)
+    gameBoard[boardValue] = playerValue
+    console.log(gameBoard)
 
-    $(this).text(stampyBoi)
-    wheener()
-    stuffed(clickyBoi)
-    SHAMEFUL()
+    $(this).text(playerValue)
+    winConditions()
+    // fillBoard(boardValue)
+    tieCondition()
+    updateGame(boardValue, playerValue, gameOver)
+      .then(response => console.log(response))
   }
-  $('.col-4').on('click', onClick)
+  // $('.col-4').on('click', onClick)
 
   // $('.col-4').on('click', function () {
   //   const value = $(this).data('value')
   //   console.log(value)
   // })
 
-  const currentPlayer = ['o', 'x']
-  function nameless () {
+  const currentPlayer = ['x', 'o']
+  function choosePlayer () {
     currentPlayer.push(currentPlayer.shift())
     return currentPlayer[0]
   }
 
-  function stuffed (id) {
-    $(`#${id}`).off()
-  }
-  function wheener () {
-    if (pain[0] === pain[1] && pain[0] === pain[2]) {
-      dumb(dumber(0))
+  // function fillBoard (id) {
+  //   $(`#${id}`).off()
+  // }
+  function winConditions () {
+    if (gameBoard[0] === gameBoard[1] && gameBoard[0] === gameBoard[2]) {
+      freezeBoard(winText(0))
     }
-    if (pain[3] === pain[4] && pain[3] === pain[5]) {
-      dumb(dumber(3))
+    if (gameBoard[3] === gameBoard[4] && gameBoard[3] === gameBoard[5]) {
+      freezeBoard(winText(3))
     }
-    if (pain[6] === pain[7] && pain[6] === pain[8]) {
-      dumb(dumber(6))
+    if (gameBoard[6] === gameBoard[7] && gameBoard[6] === gameBoard[8]) {
+      freezeBoard(winText(6))
     }
-    if (pain[0] === pain[3] && pain[0] === pain[6]) {
-      dumb(dumber(0))
+    if (gameBoard[0] === gameBoard[3] && gameBoard[0] === gameBoard[6]) {
+      freezeBoard(winText(0))
     }
-    if (pain[1] === pain[4] && pain[1] === pain[7]) {
-      dumb(dumber(1))
+    if (gameBoard[1] === gameBoard[4] && gameBoard[1] === gameBoard[7]) {
+      freezeBoard(winText(1))
     }
-    if (pain[2] === pain[5] && pain[2] === pain[8]) {
-      dumb(dumber(2))
+    if (gameBoard[2] === gameBoard[5] && gameBoard[2] === gameBoard[8]) {
+      freezeBoard(winText(2))
     }
-    if (pain[0] === pain[4] && pain[0] === pain[8]) {
-      dumb(dumber(0))
+    if (gameBoard[0] === gameBoard[4] && gameBoard[0] === gameBoard[8]) {
+      freezeBoard(winText(0))
     }
-    if (pain[6] === pain[4] && pain[6] === pain[2]) {
-      dumb(dumber(6))
+    if (gameBoard[6] === gameBoard[4] && gameBoard[6] === gameBoard[2]) {
+      freezeBoard(winText(6))
     }
   }
 
-  function SHAMEFUL () {
+  function tieCondition () {
     if (
-      pain[0] != 0 &&
-			pain[1] != 1 &&
-			pain[2] != 2 &&
-			pain[3] != 3 &&
-			pain[4] != 4 &&
-			pain[5] != 5 &&
-			pain[6] != 6 &&
-			pain[7] != 7 &&
-			pain[8] != 8
+      gameBoard[0] != 0 &&
+			gameBoard[1] != 1 &&
+			gameBoard[2] != 2 &&
+			gameBoard[3] != 3 &&
+			gameBoard[4] != 4 &&
+			gameBoard[5] != 5 &&
+			gameBoard[6] != 6 &&
+			gameBoard[7] != 7 &&
+			gameBoard[8] != 8
     ) {
-      blood(line())
+      showGameBoard(tieText())
     }
   }
 
-  function blood () {
-    const element = document.getElementById('board')
+  function showGameBoard () {
+    const element = document.getElementById('gameBoard')
     element.style.display = 'block'
   }
 
-  function line () {
-    const element = document.getElementById('hiddenloser')
+  function tieText () {
+    const element = document.getElementById('tie')
     element.style.display = 'block'
   }
 
-  function dumb () {
-    const element = document.getElementById('hiddenhweener')
+  function freezeBoard () {
+    const element = document.getElementById('win')
     element.style.display = 'block'
     $('.col-4').off()
+    gameOver = true
   }
-  function dumber (i) {
-    const element = document.getElementById('board')
+  function winText (i) {
+    const element = document.getElementById('gameBoard')
     element.style.display = 'block'
     const win = document.getElementById('identifyYourself')
-    win.textContent = pain[i]
+    win.textContent = gameBoard[i]
     const lose = document.getElementById('loser')
     lose.textContent = currentPlayer[1]
   }
 
-  function terrible () {
-    const element = document.getElementById('board')
+  function refreshGame () {
+    const element = document.getElementById('gameBoard')
     element.style.display = 'block'
-    const elementOne = document.getElementById('hiddenhweener')
+    const elementOne = document.getElementById('win')
     elementOne.style.display = 'none'
-    const elementTwo = document.getElementById('hiddenloser')
+    const elementTwo = document.getElementById('tie')
     elementTwo.style.display = 'none'
-    nameless()
-    $('.col-4').on()
+    choosePlayer()
+    // $('.col-4').on()
+    gameOver = false
   }
 })

@@ -14,6 +14,7 @@ const onSignUpFailure = function () {
 
 const onSignInSuccess = function (response) {
   $('#auth-display').html('<p>User signed in successfully</p>')
+  $('#auth-display').fadeOut(9000)
 
   // reset all forms
   $('form').trigger('reset')
@@ -50,6 +51,15 @@ const onSignOutFailure = function () {
   $('#auth-display').html('<p>Error while signing out</p>')
 }
 
+const onCreateGameSuccess = function (response) {
+  $('#auth-display').html('<p>New Game! Do better this time....really</p>')
+  store.game = response.game
+}
+
+const onCreateGameFailure = function () {
+  $('#auth-display').html('<p>Hue hue hue, imagine not being able to make a new game. Hue hue hue </p>')
+}
+
 module.exports = {
   onSignUpSuccess,
   onSignUpFailure,
@@ -58,5 +68,7 @@ module.exports = {
   onChangePasswordSuccess,
   onChangePasswordFailure,
   onSignOutSuccess,
-  onSignOutFailure
+  onSignOutFailure,
+  onCreateGameSuccess,
+  onCreateGameFailure
 }

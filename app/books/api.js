@@ -1,4 +1,4 @@
-('use strict')
+'use strict'
 
 const store = require('../store.js')
 const config = require('../config.js')
@@ -19,7 +19,18 @@ const signIn = function (data) {
   })
 }
 
-const signOut = function (data) {
+const changePassword = function (data) {
+  return $.ajax({
+    method: 'PATCH',
+    url: config.apiUrl + '/change-password',
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    },
+    data: data
+  })
+}
+
+const signOut = function () {
   return $.ajax({
     method: 'DELETE',
     url: config.apiUrl + '/sign-out',
@@ -29,21 +40,9 @@ const signOut = function (data) {
   })
 }
 
-const changePassword = function (data) {
+const newGame = function () {
   return $.ajax({
-    method: 'PATCH',
-    url: config.apiUrl + '/change-password',
-    headers: {
-      Authorization: 'Bearer ' + store.user.token
-    },
-    data
-    // same as data: data
-  })
-}
-
-const getGames = function (data) {
-  return $.ajax({
-    method: 'GET',
+    method: 'POST',
     url: config.apiUrl + '/games',
     headers: {
       Authorization: 'Bearer ' + store.user.token
@@ -51,10 +50,32 @@ const getGames = function (data) {
   })
 }
 
+const updateGame = function (index, value, over) {
+  return $.ajax({
+    method: 'PATCH',
+    url: config.apiUrl + '/games/' + store.game._id,
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    },
+    data: {
+      game: {
+        cell: {
+          index: index,
+          value: value
+        },
+        over: over
+      }
+    }
+  }
+
+  )
+}
+
 module.exports = {
   signUp,
   signIn,
-  signOut,
   changePassword,
-  getGames
+  signOut,
+  newGame,
+  updateGame
 }
